@@ -6,11 +6,12 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Memory Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-  <h1>Memory Match</h1>
-  <div id="game-board"></div>
+<body class="bg-gray-800 text-white flex flex-col items-center justify-center min-h-screen">
+  <h1 class="text-4xl text-blue-400 mb-8">Memory Match</h1>
+  <div id="game-board" class="grid grid-cols-4 gap-2 max-w-full mx-auto"></div>
   <script type="module" src="/src/main.js"></script>
 </body>
 
