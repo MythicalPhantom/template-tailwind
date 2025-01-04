@@ -35,11 +35,11 @@ function randomizeCards(cards) {
   gameBoard.innerHTML = '';
   cards.sort(() => 0.5 - Math.random()).forEach(card => {
     gameBoard.insertAdjacentHTML('beforeend', `
-      <div class="card" data-id="${card.id}">
-        <div class="front">
-          <div class="dev-cheat"></div>
+      <div class="card w-24 aspect-square flex justify-center items-center cursor-pointer relative transform-style-3d transition-transform duration-[600ms]" data-id="${card.id}">
+        <div class="front absolute w-full h-full rounded-lg bg-white flex justify-center items-center text-2xl">
+          <div class="dev-cheat absolute bottom-1 right-1 w-6 h-6 bg-cover bg-center bg-no-repeat"></div>
         </div>
-        <div class="back"></div>
+        <div class="back absolute w-full h-full rounded-lg bg-black text-white"></div>
       </div>
     `);
   });
@@ -107,13 +107,14 @@ function disableCards() {
 
 function showWinScreen() {
   gameBoard.insertAdjacentHTML("beforeend", `
-    <div id="win-screen">
-      <h1>You WIN!</h1>
-      <div><p>Attempts: ${attempts}</p></div>
-      <div><button onclick="restartGame()">Play Again</button></div>
+    <div id="win-screen" class="text-center fixed bg-gray-800 z-10 w-full h-full flex items-center justify-center flex-col top-0 left-0">
+      <h1 class="text-6xl text-blue-400">You WIN!</h1>
+      <div class="my-4"><p class="text-white text-2xl">Attempts: ${attempts}</p></div>
+      <div><button class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-4 rounded" onclick="restartGame()">Play Again</button></div>
     </div>
   `);
 }
+
 
 function resetBoard() {
   [hasFlippedCard, lockBoard] = [false, false];
