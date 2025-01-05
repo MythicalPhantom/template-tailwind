@@ -126,10 +126,16 @@ function resetBoard() {
 }
 
 function restartGame() {
-  document.getElementById('win-screen').remove();
-  gameBoard.innerHTML = '';
+  const winScreen = document.getElementById('win-screen');
+  if (winScreen) {
+    winScreen.remove();
+  }
   matchedPairs = 0;
   attempts = 0;
+  cards = [...cardData, ...cardData].map((card) => ({
+    ...card,
+    id: generateRandomId()
+  }));
   randomizeCards(cards);
   if (devMode) {
     document.querySelectorAll('.card').forEach(card => {
@@ -139,6 +145,7 @@ function restartGame() {
       card.classList.add('dev-active');
     });
   }
+  resetBoard();
 }
 
 function toggleDevMode() {
