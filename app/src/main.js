@@ -67,7 +67,7 @@ function setCardBackgrounds(cards) {
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
-  this.classList.add('transform rotate-y-180');
+  this.classList.add('animate-flip');
   const cardInfo = cards.find(c => c.id === this.dataset.id);
   this.querySelector('.back').style.backgroundImage = `url(${atob(cardInfo.img)})`;
   if (!hasFlippedCard) {
@@ -78,15 +78,19 @@ function flipCard() {
     secondCard = this;
     lockBoard = true;
     attempts++;
-    (firstCard.querySelector('.back').style.backgroundImage === secondCard.querySelector('.back').style.backgroundImage) ? disableCards() : unflipCards();
+    if (firstCard.querySelector('.back').style.backgroundImage === secondCard.querySelector('.back').style.backgroundImage) {
+      disableCards();
+    } else {
+      unflipCards();
+    }
   }
 }
 
 function unflipCards() { 
   lockBoard = true;
   setTimeout(() => {
-    firstCard.classList.remove('transform rotate-y-180');
-    secondCard.classList.remove('transform rotate-y-180');
+    firstCard.classList.remove('animate-flip');
+    secondCard.classList.remove('animate-flip');
     firstCard.querySelector('.back').style.backgroundImage = `url(data:image/png;base64,${cards.find(c => c.id === firstCard.dataset.id).img})`;
     secondCard.querySelector('.back').style.backgroundImage = `url(data:image/png;base64,${cards.find(c => c.id === secondCard.dataset.id).img})`;
     resetBoard();
