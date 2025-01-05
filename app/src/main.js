@@ -147,11 +147,15 @@ function toggleDevMode() {
     const cardInfo = cards.find(c => c.id === card.dataset.id);
     if (devMode) {
       card.querySelector('.dev-cheat').style.backgroundImage = `url(${atob(cardInfo.img)})`;
-      card.querySelector('.back').style.backgroundImage = `url(${atob(cardInfo.img)})`;
+      if (!card.classList.contains('flipped')) {
+        card.querySelector('.back').style.backgroundImage = `url(${atob(cardInfo.img)})`;
+      }
       card.classList.add('dev-active');
     } else {
       card.querySelector('.dev-cheat').style.backgroundImage = '';
-      card.querySelector('.back').style.backgroundImage = `url(data:image/png;base64,${cardInfo.img})`;
+      if (!card.classList.contains('flipped')) {
+        card.querySelector('.back').style.backgroundImage = `url(data:image/png;base64,${cardInfo.img})`;
+      }
       card.classList.remove('dev-active');
     }
   });
