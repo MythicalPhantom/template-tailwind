@@ -59,7 +59,7 @@ function renderBoard(cards) {
   updateCardSize(boardSize);
   cards.forEach(card => {
     gameBoard.insertAdjacentHTML('beforeend', `
-      <div class="card w-[var(--card-size)] h-[var(--card-size)] flex justify-center items-center cursor-pointer relative transition-transform duration-600" data-id="${card.id}">
+      <div class="card w-[var(--card-size)] h-[var(--card-size)] flex justify-center items-center cursor-pointer relative transition-transform duration-1200" data-id="${card.id}">
         <div class="front absolute w-full h-full bg-cover bg-center bg-no-repeat backface-hidden border-[3px] border-black rounded-lg" style="background-image: url(${cardBackImg});">
           <div class="dev-cheat absolute bottom-1 right-1 w-[5px] h-[5px] bg-cover bg-center bg-no-repeat hidden"></div>
         </div>
