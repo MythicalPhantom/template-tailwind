@@ -8,10 +8,31 @@
   <title>Memory Game</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="bg-gray-800 text-white flex flex-col items-center justify-center min-h-screen">
-  <h1 class="text-4xl text-blue-400 mb-8">Memory Match</h1>
-  <div id="game-board" class="grid grid-cols-4 gap-2 max-w-full mx-auto"></div>
+  <h1 class="text-[#7289da] text-center my-5">Memory Match</h1>
+  <div class="container flex justify-center items-start">
+    <div id="sidebar-1" class="w-[250px] bg-[#2c2f33] p-5 rounded-lg flex flex-col justify-between mx-5">
+      <div id="game-status" class="hidden text-center text-white"></div>
+      <div class="play-button-container flex justify-center mt-auto">
+        <button id="play-btn" class="custom-button bg-[#7289da] border-none rounded-lg px-5 py-2 text-white text-lg cursor-pointer transition-all duration-300 hover:bg-[#5b6eae] active:bg-[#4c5c93] transform hover:scale-105 active:scale-100">Play</button>
+      </div>
+    </div>
+    <div id="game-board" class="game-board grid grid-cols-4 gap-2 max-w-max"></div>
+    <div id="sidebar-2" class="w-[250px] bg-[#2c2f33] p-5 rounded-lg flex flex-col justify-between mx-5">
+      <div class="customization-options mt-3">
+        <h3 class="text-[#7289da] text-2xl mb-2">Customization</h3>
+        <label for="board-size" class="block mb-2 text-white text-lg">Board Size:</label>
+        <select id="board-size" class="custom-textbox w-full p-2 mb-3 rounded-lg border-2 border-[#7289da] bg-[#2c2f33] text-white text-lg focus:outline-none focus:border-[#5b6eae] focus:box-shadow-none transition duration-300">
+          <option value="4x4">4x4</option>
+          <option value="6x6">6x6</option>
+          <option value="8x8">8x8</option>
+          <option value="10x10">10x10</option>
+        </select>
+        <label for="card-back-img" class="block mb-2 text-white text-lg">Card Back Image URL:</label>
+        <input type="text" id="card-back-img" class="custom-textbox w-full p-2 mb-3 rounded-lg border-2 border-[#7289da] bg-[#2c2f33] text-white text-lg focus:outline-none focus:border-[#5b6eae] focus:box-shadow-none transition duration-300" placeholder="Enter URL">
+      </div>
+    </div>
+  </div>
   <script type="module" src="/src/main.js"></script>
 </body>
 
